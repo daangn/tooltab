@@ -1,15 +1,3 @@
-declare global {
-  interface Window {
-    __TOOLTAB_STORE__: Record<
-      string,
-      {
-        data: any;
-        listeners: ((data: any) => void)[];
-      }
-    >;
-  }
-}
-
 export function claim<Data>(namespace: string, initialData?: Data) {
   if (!window.__TOOLTAB_STORE__) {
     window.__TOOLTAB_STORE__ = {};
