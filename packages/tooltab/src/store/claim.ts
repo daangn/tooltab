@@ -13,23 +13,27 @@ export function claim<Data>(namespace: string, initialData?: Data) {
   const store = window.__TOOLTAB_STORE__[namespace];
 
   return {
-    get data() {
+    getData() {
       return store.data;
     },
-    set data(value: Data) {
-      store.data = value;
+    publish(data: Data) {
+      store.data = data;
+
       store.listeners.forEach((listener: (data: Data) => void) => {
-        listener(value);
+        listener(data);
       });
     },
-    addListener(listener: (data: Data) => void) {
+    subscribe(listener: (data: Data) => void) {
       store.listeners.push(listener);
-    },
-    removeListener(listener: (data: Data) => void) {
-      const index = store.listeners.indexOf(listener);
-      if (index !== -1) {
-        store.listeners.splice(index, 1);
-      }
+      listener(store.data);
+      return {
+        unsubscribe() {
+          const index = store.listeners.indexOf(listener);
+          if (index !== -1) {
+            store.listeners.splice(index, 1);
+          }
+        },
+      };
     },
   };
 }
