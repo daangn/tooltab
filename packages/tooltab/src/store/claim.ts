@@ -13,7 +13,7 @@ export function claim<Data>(namespace: string, initialData?: Data) {
   const store = window.__TOOLTAB_STORE__[namespace];
 
   return {
-    getData() {
+    getData(): Data {
       return store.data;
     },
     publish(data: Data) {
