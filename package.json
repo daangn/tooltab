@@ -8,13 +8,13 @@
   "scripts": {
     "build": "ultra -r build",
     "build:dts": "ultra -r --build build:dts",
+    "changeset:release": "yarn build && yarn changeset publish",
+    "changeset:version": "changeset version && yarn install --no-immutable",
+    "changeset:version:snapshot": "changeset version --snapshot main && yarn install --no-immutable",
     "clean": "ultra -r clean",
     "format": "eslint --fix --ext .js,.json,.ts,.tsx --ignore-path .gitignore .",
-    "release": "yarn build && yarn changeset publish",
     "test": "yarn build && ultra -r test",
-    "typecheck": "tsc --noEmit",
-    "version": "changeset version && yarn install --no-immutable",
-    "version:snapshot": "changeset version --snapshot main && yarn install --no-immutable"
+    "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
     "*.js": "eslint --fix --ignore-path .gitignore",
