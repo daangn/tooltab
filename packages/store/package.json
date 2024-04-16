@@ -1,10 +1,10 @@
 {
-  "name": "tooltab",
+  "name": "@tooltab/store",
   "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daangn/tooltab.git",
-    "directory": "packages/tooltab"
+    "directory": "packages/store"
   },
   "license": "MIT",
   "exports": {
